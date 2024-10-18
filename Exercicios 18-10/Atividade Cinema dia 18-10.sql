@@ -351,13 +351,11 @@ SELECT * FROM filme;
 -- Faça as seguintes consultas:
 
 -- 1. Apuração do público por município
-SELECT c.nome AS cidade, SUM(s.publico) AS total_publico
-FROM sessao s
-JOIN sala sa ON s.sala_id = sa.id
-JOIN cinema ci ON sa.cinema_id = ci.id
-JOIN cidade c ON ci.cidade_id = c.id
-GROUP BY c.nome
-ORDER BY total_publico DESC;
+SELECT nomeFantasia 
+FROM cinema 
+JOIN cidade ON cinema.cidade_id = cidade.id
+WHERE cidade.nome = 'Pelotas';
+
 
 
 -- 2. Apuração do público por cinema
@@ -386,7 +384,10 @@ JOIN sessao se ON sa.id = se.sala_id
 JOIN filme f ON se.filme_id = f.id
 JOIN elenco e ON f.id = e.filme_id
 JOIN ator a ON e.ator_id = a.id
-WHERE a.nome = 'Nome do Ator';
+WHERE a.nome = 'Keira Knightley';
+
+
+
 
 
 -- 5. Em quais cinemas está sendo exibido um determinado gênero de filme;
@@ -397,7 +398,7 @@ JOIN sessao se ON sa.id = se.sala_id
 JOIN filme f ON se.filme_id = f.id
 JOIN genero_filme gf ON f.id = gf.filme_id
 JOIN genero g ON gf.genero_id = g.id
-WHERE g.nome = 'NomeDoGenero';
+WHERE g.nome = 'Ficção';
 
 
 
